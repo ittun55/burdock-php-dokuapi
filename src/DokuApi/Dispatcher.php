@@ -36,10 +36,20 @@ class Dispatcher
             if (self::checkAcl($resource, $user, $groups)) {
                 $controller = self::getController($resource);
                 $action     = isset($request['action']) ? $request['action'] : 'index';
-                $controller::setConfig(self::$config);
-                $controller::setLogger(self::$logger);
-                $controller::setPdo(self::$pdo);
-                $controller::$action();
+                if (method_exists($controller, $action)) {
+                    $controller::setConfig(self::$config);
+                    $controller::setLogger(self::$logger);
+                    $controller::setPdo(self::$pdo);
+                    $params = isset($request['params']) ? $request['params'] : null;
+                    $controller::$action($params);
+                } else {
+                    header('content-type: application/json; charset=utf-8');
+                    $err = [ 'code' => 404, 'errors' => [
+                        '_summary' => 'Not Found'
+                    ]];
+                    echo json_encode($err, JSON_PRETTY_PRINT);
+                    exit;
+                }
             } else {
                 header('content-type: application/json; charset=utf-8');
                 $err = [ 'code' => 403, 'errors' => [

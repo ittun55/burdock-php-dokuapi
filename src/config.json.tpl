@@ -15,7 +15,7 @@
     "pass"   : "password"
   },
   "routing": {
-    "default": "Burdock\\DokuApi\\Controller\\NotFoundController",
-    "debug"  : "Burdock\\DokuApi\\Controller\\DebugController"
+    "default": "Api\\Controller\\NotFoundController",
+    "debug"  : "Api\\Controller\\DebugController"
   }
 }

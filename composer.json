@@ -2,8 +2,8 @@
     "name": "burdock/php-dokuapi",
     "type": "library",
     "require": {
-        "burdock/php-datamodel": "v0.0.8",
-        "burdock/php-config": "v0.0.3",
+        "burdock/php-datamodel": "^0.0.8",
+        "burdock/php-config": "^0.0.3",
         "monolog/monolog": "^2.0",
         "ext-json": "*",
         "ext-pdo": "*"

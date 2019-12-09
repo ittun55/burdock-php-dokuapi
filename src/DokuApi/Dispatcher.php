@@ -15,7 +15,7 @@ class Dispatcher
     private static $logger = null;
     private static $pdo    = null;
 
-    public static function dispatch(Array $userinfo): void
+    public static function dispatch(?Array $userinfo): void
     {
         try {
             self::loadServices();

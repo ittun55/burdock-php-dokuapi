@@ -1,0 +1,24 @@
+{
+    "name": "burdock/php-dokuapi",
+    "type": "library",
+    "require": {
+        "burdock/php-datamodel": "dev-master",
+        "burdock/php-config": "dev-master",
+        "monolog/monolog": "^2.0@dev",
+        "ext-json": "*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Burdock\\DokuApi\\": "src/DokuApi"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hiraku Saito",
+            "email": "ittun55@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "description": ""
+}

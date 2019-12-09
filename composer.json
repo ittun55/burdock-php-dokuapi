@@ -19,6 +19,6 @@
             "email": "ittun55@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "prefer-stable": true,
     "description": ""
 }

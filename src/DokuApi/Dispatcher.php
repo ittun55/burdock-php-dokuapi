@@ -1,5 +1,5 @@
 <?php
-namespace Burdock\Api;
+namespace Burdock\DokuApi;
 
 use Burdock\Config\Config;
 use Exception;

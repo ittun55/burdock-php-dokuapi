@@ -1,0 +1,5 @@
+vendor/
+/Controller/*
+/Model/*
+tmp/
+config.json

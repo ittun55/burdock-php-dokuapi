@@ -54,9 +54,9 @@ class Container
     public static function createLogger(Config $config): LoggerInterface
     {
         $logger = new Logger($config->getValue('logger.name'));
-        $path = __DIR__.'/'.$config->getValue('logger.path');
-        $count = $config->getValue('logger.count');
-        $level = $config->getValue('logger.level');
+        $path   = $config->getValue('logger.path');
+        $count  = $config->getValue('logger.count');
+        $level  = $config->getValue('logger.level');
         $stderr = $config->getValue('logger.stderr');
         $fileHandler = new RotatingFileHandler($path, $count, $level);
         $streamHandler = new StreamHandler('php://stderr', $stderr);

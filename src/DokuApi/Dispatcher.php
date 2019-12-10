@@ -81,6 +81,7 @@ class Dispatcher
      * @param $user
      * @param $groups
      * @return bool
+     * @throws Exception
      */
     public static function checkAcl($resource, $user, $groups): bool
     {
@@ -89,7 +90,10 @@ class Dispatcher
             'user' => $user, // user は環境変数から取得
             'groups' => $groups
         ];
-        return (self::$aclFunc($data) >= 1);
+        $func = self::$aclFunc;
+        if (!is_callable($func))
+            throw new Exception('Auth function is not specified');
+        return ($func($data) >= 1);
     }
 
     public static function getController(string $resource): string

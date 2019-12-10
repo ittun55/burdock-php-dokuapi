@@ -1,11 +1,14 @@
 <?php
 namespace Burdock\DokuApi;
 
+use Burdock\Config;
+use Exception;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\RotatingFileHandler;
 use PDO;
 use Pimple\Container as Pimple;
+use Psr\Log\LoggerInterface;
 
 class Container
 {
@@ -25,7 +28,8 @@ class Container
         };
         self::$container['schema'] = function($c) {
             $config = $c['config'];
-            return Config::load(DOKU_INC . $config->getValue('db.schema'));
+            $schemaConfig = Config::load(DOKU_INC . $config->getValue('db.schema'));
+            return $schemaConfig->getValue();
         };
     }
 

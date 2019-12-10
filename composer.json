@@ -6,7 +6,8 @@
         "burdock/php-config": "^0.0.3",
         "monolog/monolog": "^2.0",
         "ext-json": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "pimple/pimple": "~3.0"
     },
     "autoload": {
         "psr-4": {

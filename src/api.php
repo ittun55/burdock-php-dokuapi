@@ -5,6 +5,7 @@ define('DOKU_DISABLE_GZIP_OUTPUT', 1);
 
 global $USERINFO;
 require_once(DOKU_INC.'inc/init.php');
+$USERINFO['user'] = $_SERVER['REMOTE_USER'];
 session_write_close();  //close session
 
 $autoloader = require_once(DOKU_INC . 'api/vendor/autoload.php');
@@ -13,5 +14,11 @@ $autoloader = require_once(DOKU_INC . 'api/vendor/autoload.php');
 //echo json_encode($result);
 //exit;
 
+$aclFunc = function($data) {
+    return auth_aclcheck_cb($data);
+};
+
+Burdock\DokuApi\Container::initialize();
+Burdock\DokuApi\Dispatcher::setAclFunc($aclFunc);
 Burdock\DokuApi\Dispatcher::dispatch($USERINFO);
 

@@ -1,7 +1,7 @@
 <?php
 namespace Burdock\DokuApi;
 
-use Burdock\Config;
+use Burdock\Config\Config;
 use Exception;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;

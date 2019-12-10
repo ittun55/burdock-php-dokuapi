@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1e7c763384f99eb65593e8490eb54e6",
+    "content-hash": "37bb92515d53b8c2679db01410ad9118",
     "packages": [
         {
             "name": "burdock/php-config",
@@ -51,20 +51,22 @@
         },
         {
             "name": "burdock/php-datamodel",
-            "version": "v0.0.8",
+            "version": "v0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-datamodel.git",
-                "reference": "770315002cd21e2e33826bcc2bf5b3c271460cb1"
+                "reference": "b1349bbaa602e57fcf9f823404716aaa565d1f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/770315002cd21e2e33826bcc2bf5b3c271460cb1",
-                "reference": "770315002cd21e2e33826bcc2bf5b3c271460cb1",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/b1349bbaa602e57fcf9f823404716aaa565d1f0d",
+                "reference": "b1349bbaa602e57fcf9f823404716aaa565d1f0d",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "ext-pdo": "*",
+                "iamcal/sql-parser": "^0.2.0",
                 "psr/log": "^1.1"
             },
             "require-dev": {
@@ -85,7 +87,44 @@
                     "email": "ittun55@gmail.com"
                 }
             ],
-            "time": "2019-11-15T14:14:56+00:00"
+            "time": "2019-12-10T01:55:17+00:00"
+        },
+        {
+            "name": "iamcal/sql-parser",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iamcal/SQLParser.git",
+                "reference": "dcb614bae8151ed9db79f56cb2cf369b9749f21b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iamcal/SQLParser/zipball/dcb614bae8151ed9db79f56cb2cf369b9749f21b",
+                "reference": "dcb614bae8151ed9db79f56cb2cf369b9749f21b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "~1.0",
+                "phpunit/phpunit": ">=4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "iamcal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cal Henderson",
+                    "email": "cal@iamcal.com"
+                }
+            ],
+            "description": "MySQL schema parser",
+            "time": "2018-01-09T21:19:45+00:00"
         },
         {
             "name": "monolog/monolog",

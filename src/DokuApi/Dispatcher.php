@@ -98,7 +98,7 @@ class Dispatcher
 
     public static function getController(string $resource): string
     {
-        $routing = self::$config->getValue('routing');
+        $routing = Container::get('config')->getValue('routing');
         return array_key_exists($resource, $routing) ? $routing[$resource] : $routing['default'];
     }
 

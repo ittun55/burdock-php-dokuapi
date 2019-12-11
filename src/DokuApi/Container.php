@@ -85,7 +85,8 @@ class Container
      * CRITICAL  => 500
      * ALERT     => 550
      * EMERGENCY => 600
-     * @param Config $config
+     * @param string $name
+     * @param array $setting
      * @return LoggerInterface
      * @throws Exception
      */

@@ -18,7 +18,7 @@ $aclFunc = function($data) {
     return auth_aclcheck_cb($data);
 };
 
-Burdock\DokuApi\Container::initialize();
+Burdock\DokuApi\Container::initialize(DOKU_INC . 'api/config.json');
 Burdock\DokuApi\Dispatcher::setAclFunc($aclFunc);
 Burdock\DokuApi\Dispatcher::dispatch($USERINFO);
 

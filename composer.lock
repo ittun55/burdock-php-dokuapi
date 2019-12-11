@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16c83b0619d6fcdd70b3c6e5b268c987",
+    "content-hash": "b56d3ed027819123561141238bd6a2be",
     "packages": [
         {
             "name": "burdock/php-config",
@@ -51,16 +51,16 @@
         },
         {
             "name": "burdock/php-datamodel",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-datamodel.git",
-                "reference": "b1349bbaa602e57fcf9f823404716aaa565d1f0d"
+                "reference": "6a3d023d4df9e2367cbd5514e63aedba45f8c921"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/b1349bbaa602e57fcf9f823404716aaa565d1f0d",
-                "reference": "b1349bbaa602e57fcf9f823404716aaa565d1f0d",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/6a3d023d4df9e2367cbd5514e63aedba45f8c921",
+                "reference": "6a3d023d4df9e2367cbd5514e63aedba45f8c921",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                     "email": "ittun55@gmail.com"
                 }
             ],
-            "time": "2019-12-10T01:55:17+00:00"
+            "time": "2019-12-10T15:14:48+00:00"
         },
         {
             "name": "iamcal/sql-parser",

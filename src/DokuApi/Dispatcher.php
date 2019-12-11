@@ -39,9 +39,7 @@ class Dispatcher
                 self::sendErrorResponse(404, ['_summary' => 'Not Found']);
             }
 
-            $controller::setConfig(Container::get('config'));
-            $controller::setLogger(Container::get('logger'));
-            $controller::setPdo(Container::get('pdo'));
+            $controller::initialize();
             $params = isset($request['params']) ? $request['params'] : null;
             $controller::$action($params);
         } catch (Exception $e) {

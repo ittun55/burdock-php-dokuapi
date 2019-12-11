@@ -17,13 +17,13 @@ class Container
     public static function initialize(string $config_path): void
     {
         self::$container = new Pimple();
-        self::$container['config'] = function($c) {
+        self::$container['config'] = function($c) use ($config_path) {
             return Config::load($config_path);
         };
 
         $root_dir = dirname(realpath($config_path));
         $config = self::$container['config'];
-        $config->set('app.root_dir', $root_dir);
+        $config->setValue('app.root_dir', $root_dir);
 
         self::initPdo($config->getValue('db'), self::$container);
         self::initLogger($config->getValue('logger'), self::$container);
@@ -49,7 +49,7 @@ class Container
     public static function initPdo($db, $container)
     {
         foreach($db as $conn => $setting) {
-            $container['pdo.'.$conn] = createPdo($setting);
+            $container['pdo.'.$conn] = self::createPdo($setting);
         }
     }
 
@@ -72,7 +72,7 @@ class Container
     public static function initLogger($logger, $container)
     {
         foreach($logger as $name => $setting) {
-            $container['logger.'.$name] = createLogger($name, $setting);
+            $container['logger.'.$name] = self::createLogger($name, $setting);
         }
     }
 
@@ -93,7 +93,7 @@ class Container
     {
         $logger = new Logger($name);
         $path   = $setting['path'];
-        $count  = $setting['rotate'];
+        $rotate  = $setting['rotate'];
         $level  = $setting['level'];
         $fileHandler = new RotatingFileHandler($path, $rotate, $level);
         $logger->pushHandler($fileHandler);

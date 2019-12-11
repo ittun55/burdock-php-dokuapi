@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b21ccedacca959de646b934a8284170",
+    "content-hash": "16c83b0619d6fcdd70b3c6e5b268c987",
     "packages": [
         {
             "name": "burdock/php-config",
-            "version": "v0.0.3",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-config.git",
-                "reference": "9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b"
+                "reference": "f94655c190911554af4ffee8a4f50379ed04cea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b",
-                "reference": "9f2fd7ac32446f58dfe1c1cb1bca10cbf039690b",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-config/zipball/f94655c190911554af4ffee8a4f50379ed04cea7",
+                "reference": "f94655c190911554af4ffee8a4f50379ed04cea7",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 }
             ],
             "description": "loading configuration from json/yaml/toml file",
-            "time": "2019-11-07T08:08:33+00:00"
+            "time": "2019-12-11T06:48:14+00:00"
         },
         {
             "name": "burdock/php-datamodel",

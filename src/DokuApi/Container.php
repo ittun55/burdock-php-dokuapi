@@ -14,21 +14,24 @@ class Container
 {
     protected static $container;
 
-    public static function initialize()
+    public static function initialize(string $config_path): void
     {
         self::$container = new Pimple();
         self::$container['config'] = function($c) {
-            return Config::load(DOKU_INC . 'api/config.json');
+            return Config::load($config_path);
         };
-        self::$container['pdo'] = function($c) {
-            return self::createPdo($c['config']);
-        };
-        self::$container['logger'] = function($c) {
-            return self::createLogger($c['config']);
-        };
+
+        $root_dir = dirname(realpath($config_path));
+        $config = self::$container['config'];
+        $config->set('app.root_dir', $root_dir);
+
+        self::initPdo($config->getValue('db'), self::$container);
+        self::initLogger($config->getValue('logger'), self::$container);
+
         self::$container['schema'] = function($c) {
             $config = $c['config'];
-            $schemaConfig = Config::load(DOKU_INC . $config->getValue('db.schema'));
+            $schema_path = $config->getValue('app.root_dir').'/Model/schema.json';
+            $schemaConfig = Config::load($schema_path);
             return $schemaConfig->getValue();
         };
     }
@@ -36,6 +39,41 @@ class Container
     public static function get($service)
     {
         return self::$container[$service];
+    }
+
+    public static function set($service, $callable)
+    {
+        self::$container[$service] = $callable;
+    }
+
+    public static function initPdo($db, $container)
+    {
+        foreach($db as $conn => $setting) {
+            $container['pdo.'.$conn] = createPdo($setting);
+        }
+    }
+
+    public static function createPdo(array $setting): PDO
+    {
+        $host     = $setting['host'];
+        $port     = $setting['port'];
+        $dbname   = $setting['name'];
+        $charset  = $setting['charset'];
+        $username = $setting['user'];
+        $password = $setting['pass'];
+        $dsn = "mysql:host=${host};port=${port};dbname=${dbname};charset=${charset}";
+        $options  = array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        );
+        return new PDO($dsn, $username, $password, $options);
+    }
+
+    public static function initLogger($logger, $container)
+    {
+        foreach($logger as $name => $setting) {
+            $container['logger.'.$name] = createLogger($name, $setting);
+        }
     }
 
     /**
@@ -51,33 +89,19 @@ class Container
      * @return LoggerInterface
      * @throws Exception
      */
-    public static function createLogger(Config $config): LoggerInterface
+    public static function createLogger(string $name, array $setting): LoggerInterface
     {
-        $logger = new Logger($config->getValue('logger.name'));
-        $path   = $config->getValue('logger.path');
-        $count  = $config->getValue('logger.count');
-        $level  = $config->getValue('logger.level');
-        $stderr = $config->getValue('logger.stderr');
-        $fileHandler = new RotatingFileHandler($path, $count, $level);
-        $streamHandler = new StreamHandler('php://stderr', $stderr);
+        $logger = new Logger($name);
+        $path   = $setting['path'];
+        $count  = $setting['rotate'];
+        $level  = $setting['level'];
+        $fileHandler = new RotatingFileHandler($path, $rotate, $level);
         $logger->pushHandler($fileHandler);
-        $logger->pushHandler($streamHandler);
+        if (isset($setting['stderr'])) {
+            $stderr = $setting['stderr'];
+            $streamHandler = new StreamHandler('php://stderr', $stderr);
+            $logger->pushHandler($streamHandler);
+        }
         return $logger;
-    }
-
-    public static function createPdo(Config $config): PDO
-    {
-        $host     = $config->getValue('db.host');
-        $port     = $config->getValue('db.port');
-        $dbname   = $config->getValue('db.name');
-        $charset  = $config->getValue('db.charset');
-        $username = $config->getValue('db.user');
-        $password = $config->getValue('db.pass');
-        $dsn = "mysql:host=${host};port=${port};dbname=${dbname};charset=${charset}";
-        $options  = array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        );
-        return new PDO($dsn, $username, $password, $options);
     }
 }

@@ -41,7 +41,7 @@ class Dispatcher
 
             $controller::initialize();
             $params = isset($request['params']) ? $request['params'] : null;
-            $controller::$action($params);
+            $controller::$action($params, $userinfo);
         } catch (Exception $e) {
             $logger = Container::get('logger');
             $logger->error($e->getMessage());

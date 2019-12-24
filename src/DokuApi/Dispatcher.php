@@ -21,7 +21,7 @@ class Dispatcher
             $request = self::parseRequest();
 
             if (is_null($request) || !isset($request['resource'])) {
-                self::sendErrorResponse(400, ['_summary' => 'Invalid Request']);
+                Response::error(400, ['_summary' => 'Invalid Request'], true);
             }
 
             $resource = $request['resource'];
@@ -29,14 +29,14 @@ class Dispatcher
             $groups   = $userinfo['grps'];
 
             if (!self::checkAcl($resource, $user, $groups)) {
-                self::sendErrorResponse(403, ['_summary' => 'Forbidden']);
+                Response::error(403, ['_summary' => 'Forbidden'], true);
             }
 
             $controller = self::getController($resource);
             $action = isset($request['action']) ? $request['action'] : 'index';
     
             if (!method_exists($controller, $action)) {
-                self::sendErrorResponse(404, ['_summary' => 'Not Found']);
+                Response::error(404, ['_summary' => 'Not Found'], true);
             }
 
             $controller::initialize();
@@ -45,7 +45,7 @@ class Dispatcher
         } catch (Exception $e) {
             $logger = Container::get('logger');
             $logger->error($e->getMessage());
-            self::sendErrorResponse(500, ['_summary' => 'Unknown Error']);
+            Response::error(500, ['_summary' => 'Unknown Error'], true);
         }
     }
 
@@ -98,14 +98,5 @@ class Dispatcher
     {
         $routing = Container::get('config')->getValue('routing');
         return array_key_exists($resource, $routing) ? $routing[$resource] : $routing['default'];
-    }
-
-    public static function sendErrorResponse($code, $errors): void
-    {
-        http_response_code($code);
-        header('content-type: application/json; charset=utf-8');
-        $err = [ 'code' => $code, 'errors' => $errors ];
-        echo json_encode($err, JSON_PRETTY_PRINT);
-        exit;
     }
 }

@@ -43,7 +43,7 @@ class Dispatcher
             $params = isset($request['params']) ? $request['params'] : null;
             $controller::$action($params, $userinfo);
         } catch (Exception $e) {
-            $logger = Container::get('logger');
+            $logger = Container::get('logger.dokuapi');
             $logger->error($e->getMessage());
             Response::error(500, ['_summary' => 'Unknown Error'], true);
         }

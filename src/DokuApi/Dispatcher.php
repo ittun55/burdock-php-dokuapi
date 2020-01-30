@@ -1,10 +1,8 @@
 <?php
 namespace Burdock\DokuApi;
 
-use Burdock\Config\Config;
+use Error;
 use Exception;
-use Monolog\Logger;
-use Psr\Log\LoggerInterface;
 
 class Dispatcher
 {
@@ -44,8 +42,18 @@ class Dispatcher
             $controller::$action($params, $userinfo);
         } catch (Exception $e) {
             $logger = Container::get('logger.dokuapi');
-            $logger->error($e->getMessage());
-            Response::error(500, ['_summary' => 'Unknown Error'], true);
+            $logger->error($e);
+            Response::error(500, [
+                '_summary' => $e->getMessage(),
+                '_trace' => $e->getTrace()
+            ], true);
+        } catch (Error $e) {
+            $logger = Container::get('logger.dokuapi');
+            $logger->error($e);
+            Response::error(500, [
+                '_summary' => $e->getMessage(),
+                '_trace' => $e->getTrace()
+            ], true);
         }
     }
 

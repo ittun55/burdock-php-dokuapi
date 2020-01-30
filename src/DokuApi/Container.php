@@ -3,6 +3,7 @@ namespace Burdock\DokuApi;
 
 use Burdock\Config\Config;
 use Exception;
+use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\RotatingFileHandler;
@@ -97,7 +98,9 @@ class Container
         $rotate  = $setting['rotate'];
         $level  = $setting['level'];
         $fileHandler = new RotatingFileHandler($path, $rotate, $level);
-        $logger->pushHandler($fileHandler);
+        $formatter = new LineFormatter();
+        $formatter->includeStacktraces(true);
+        $logger->pushHandler($fileHandler->setFormatter($formatter));
         if (isset($setting['stderr'])) {
             $stderr = $setting['stderr'];
             $streamHandler = new StreamHandler('php://stderr', $stderr);

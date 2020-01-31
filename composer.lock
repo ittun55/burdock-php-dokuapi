@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f33fc1a83057625bbb7601f18dd44ad",
+    "content-hash": "5bdba25e09d0d2ae262be8db690c42af",
     "packages": [
         {
             "name": "burdock/php-config",
@@ -51,16 +51,16 @@
         },
         {
             "name": "burdock/php-datamodel",
-            "version": "v0.0.15",
+            "version": "v0.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-datamodel.git",
-                "reference": "147e9d6cbafd2ef9fb37453feeff4ba2e23b67ce"
+                "reference": "bd99cc7bc9055dcea3c738152c39c4682fef7793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/147e9d6cbafd2ef9fb37453feeff4ba2e23b67ce",
-                "reference": "147e9d6cbafd2ef9fb37453feeff4ba2e23b67ce",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/bd99cc7bc9055dcea3c738152c39c4682fef7793",
+                "reference": "bd99cc7bc9055dcea3c738152c39c4682fef7793",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                     "email": "ittun55@gmail.com"
                 }
             ],
-            "time": "2020-01-20T18:24:11+00:00"
+            "time": "2020-01-31T14:19:20+00:00"
         },
         {
             "name": "iamcal/sql-parser",
@@ -413,16 +413,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.2",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a08832b974dd5fafe3085a66d41fe4c84bb2628c"
+                "reference": "cd014e425b3668220adb865f53bff64b3ad21767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a08832b974dd5fafe3085a66d41fe4c84bb2628c",
-                "reference": "a08832b974dd5fafe3085a66d41fe4c84bb2628c",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/cd014e425b3668220adb865f53bff64b3ad21767",
+                "reference": "cd014e425b3668220adb865f53bff64b3ad21767",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +468,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-10T10:33:21+00:00"
+            "time": "2020-01-21T11:12:16+00:00"
         },
         {
             "name": "yosymfony/parser-utils",

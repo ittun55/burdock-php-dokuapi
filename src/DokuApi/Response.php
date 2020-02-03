@@ -10,6 +10,7 @@ class Response
         header('content-type: application/json; charset=utf-8');
         $err = [ 'code' => $code, 'errors' => $errors ];
         echo json_encode($err, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit();
     }
 
     public static function send($code, $data, $setStatus=false): void
@@ -18,5 +19,6 @@ class Response
         header('content-type: application/json; charset=utf-8');
         $data['_code'] = $code;
         echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        exit();
     }
 }

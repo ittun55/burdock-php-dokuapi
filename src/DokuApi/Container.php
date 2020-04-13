@@ -2,6 +2,7 @@
 namespace Burdock\DokuApi;
 
 use Burdock\Config\Config;
+use Burdock\DataModel\Model;
 use Exception;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;
@@ -52,6 +53,7 @@ class Container
         foreach($db as $conn => $setting) {
             $container['pdo.'.$conn] = self::createPdo($setting);
         }
+        Model::setPDOInstance($container['pdo.default']);
     }
 
     public static function createPdo(array $setting): PDO

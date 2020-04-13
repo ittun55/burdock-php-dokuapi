@@ -22,6 +22,14 @@
       "pass"   : "password"
     }
   },
+  "smtp": {
+    "default": {
+      "host"   : "smtp.burdock.io",
+      "port"   : "587",
+      "user"   : "user@burdock.io",
+      "pass"   : "password"
+    }
+  },
   "routing": {
     "default": "Burdock\\DokuApi\\Controller\\NotFoundController",
     "debug"  : "Burdock\\DokuApi\\Controller\\DebugController",

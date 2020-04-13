@@ -7,7 +7,8 @@
         "monolog/monolog": "^2.0",
         "ext-json": "*",
         "ext-pdo": "*",
-        "pimple/pimple": "~3.0"
+        "pimple/pimple": "~3.0",
+        "burdock/php-sendmail": "^0.0.2"
     },
     "autoload": {
         "psr-4": {

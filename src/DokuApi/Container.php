@@ -116,17 +116,14 @@ class Container
     public static function initMailer($smtp, $container): void
     {
         foreach($smtp as $name => $setting) {
-            $container['mailer.'.$name] = self::createMailer($setting);
+            $container['mailer.'.$name] = function() use ($setting) {
+                $user = $setting['user'];
+                $pass = $setting['pass'];
+                $host = $setting['host'];
+                $port = $setting['port'];
+                $dsn = "smtp://${user}:${pass}@${host}:${port}";
+                return new SendMail($dsn);
+            };
         }
-    }
-
-    public static function createMailer($setting): SendMail
-    {
-        $user = $setting['user'];
-        $pass = $setting['pass'];
-        $host = $setting['host'];
-        $port = $setting['port'];
-        $dsn = "smtp://${user}:${pass}@${host}:${port}";
-        return new SendMail($dsn);
     }
 }

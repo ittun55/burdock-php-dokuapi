@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddad688af52c7eb5183b4cc4754a0971",
+    "content-hash": "96c19aedb7eeadb3e6d211a84cf038ab",
     "packages": [
         {
             "name": "burdock/php-config",
@@ -51,16 +51,16 @@
         },
         {
             "name": "burdock/php-datamodel",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-datamodel.git",
-                "reference": "ab84c0db9c1a0373e9c2fafe5ee328ccdf0ecbd3"
+                "reference": "6359bf321bb0126aaab9dcb2fb4887456fc618ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/ab84c0db9c1a0373e9c2fafe5ee328ccdf0ecbd3",
-                "reference": "ab84c0db9c1a0373e9c2fafe5ee328ccdf0ecbd3",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/6359bf321bb0126aaab9dcb2fb4887456fc618ff",
+                "reference": "6359bf321bb0126aaab9dcb2fb4887456fc618ff",
                 "shasum": ""
             },
             "require": {
@@ -70,6 +70,7 @@
                 "psr/log": "^1.1"
             },
             "require-dev": {
+                "burdock/php-config": "^0.2.1",
                 "monolog/monolog": "^2.0",
                 "phpunit/phpunit": "^8.3",
                 "vlucas/phpdotenv": "^3.4"
@@ -87,7 +88,7 @@
                     "email": "ittun55@gmail.com"
                 }
             ],
-            "time": "2020-03-19T06:38:41+00:00"
+            "time": "2020-04-23T15:47:59+00:00"
         },
         {
             "name": "burdock/php-sendmail",

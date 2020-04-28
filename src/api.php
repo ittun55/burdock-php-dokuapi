@@ -21,4 +21,3 @@ $aclFunc = function($data) {
 Burdock\DokuApi\Container::initialize(DOKU_INC . 'api/config.json');
 Burdock\DokuApi\Dispatcher::setAclFunc($aclFunc);
 Burdock\DokuApi\Dispatcher::dispatch($USERINFO);
-

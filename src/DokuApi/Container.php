@@ -3,6 +3,7 @@ namespace Burdock\DokuApi;
 
 use Burdock\Config\Config;
 use Burdock\DataModel\Model;
+use Burdock\DokuApi\Controller\BaseController;
 use Burdock\SendMail\SendMail;
 use Exception;
 use Monolog\Formatter\LineFormatter;
@@ -31,6 +32,8 @@ class Container
         self::initPdo($config->getValue('db'), self::$container);
         self::initLogger($config->getValue('logger'), self::$container);
         self::initMailer($config->getValue('smtp'), self::$container);
+        self::initModel(self::$container);
+        self::initController(self::$container);
 
         self::$container['schema'] = function($c) {
             $config = $c['config'];
@@ -55,7 +58,6 @@ class Container
         foreach($db as $conn => $setting) {
             $container['pdo.'.$conn] = self::createPdo($setting);
         }
-        Model::setPDOInstance($container['pdo.default']);
     }
 
     public static function createPdo(array $setting): PDO
@@ -125,5 +127,17 @@ class Container
                 return new SendMail($dsn);
             };
         }
+    }
+
+    public static function initModel($container): void
+    {
+        Model::setPDOInstance($container['pdo.default']);
+        Model::setLogger($container['logger.default']);
+    }
+
+    public static function initController($container): void
+    {
+        BaseController::setPDOInstance($container['pdo.default']);
+        BaseController::setLogger($container['logger.default']);
     }
 }

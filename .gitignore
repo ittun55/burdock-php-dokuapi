@@ -2,3 +2,4 @@
 vendor/
 tmp/
 config.json
+.phpunit.result.cache

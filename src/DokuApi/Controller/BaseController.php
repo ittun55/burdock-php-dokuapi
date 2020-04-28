@@ -7,10 +7,10 @@ use Psr\Log\NullLogger;
 
 class BaseController
 {
-    static $pdo = null;
-    static $logger = null;
+    protected static $pdo = null;
+    protected static $logger = null;
 
-    public static function setPDOInstance(PDO $pdo)
+    public static function setPDOInstance(PDO $pdo): void
     {
         static::$pdo = $pdo;
     }
@@ -20,7 +20,7 @@ class BaseController
         return static::$pdo;
     }
 
-    public static function setLogger(LoggerInterface $logger)
+    public static function setLogger(LoggerInterface $logger): void
     {
         static::$logger = $logger;
     }

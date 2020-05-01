@@ -41,7 +41,7 @@ class Dispatcher
             $params = isset($request['params']) ? $request['params'] : null;
             $controller::$action($params, $userinfo);
         } catch (Throwable $e) {
-            $logger = Container::get('logger.dokuapi');
+            $logger = Container::get('logger.default');
             $logger->error($e);
             Response::error(500, [
                 '_summary' => $e->getMessage(),

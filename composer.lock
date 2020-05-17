@@ -51,16 +51,16 @@
         },
         {
             "name": "burdock/php-datamodel",
-            "version": "v0.2.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ittun55/burdock-php-datamodel.git",
-                "reference": "b2261dcaecbfb8e7cd50809f70908bef17d43a69"
+                "reference": "de8ff1d33a5bb0ee02a33af16e0d6fe52123b21e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/b2261dcaecbfb8e7cd50809f70908bef17d43a69",
-                "reference": "b2261dcaecbfb8e7cd50809f70908bef17d43a69",
+                "url": "https://api.github.com/repos/ittun55/burdock-php-datamodel/zipball/de8ff1d33a5bb0ee02a33af16e0d6fe52123b21e",
+                "reference": "de8ff1d33a5bb0ee02a33af16e0d6fe52123b21e",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                     "email": "ittun55@gmail.com"
                 }
             ],
-            "time": "2020-05-16T03:58:21+00:00"
+            "time": "2020-05-17T10:17:02+00:00"
         },
         {
             "name": "burdock/php-sendmail",

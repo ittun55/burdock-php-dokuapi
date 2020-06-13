@@ -28,8 +28,10 @@ class Container
         $root_dir = dirname(realpath($config_path));
         $config = self::$container['config'];
         $config->setValue('app.root_dir', $root_dir);
-        $base_url = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"];
-        $config->setValue('app.base_url', $base_url);
+        if (php_sapi_name() !== 'cli') {
+            $base_url = (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"];
+            $config->setValue('app.base_url', $base_url);
+        }
 
         self::initPdo($config->getValue('db'), self::$container);
         self::initLogger($config->getValue('logger'), self::$container);

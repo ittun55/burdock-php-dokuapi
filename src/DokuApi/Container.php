@@ -73,11 +73,12 @@ class Container
         $username = $setting['user'];
         $password = $setting['pass'];
         $dsn = "mysql:host=${host};port=${port};dbname=${dbname};charset=${charset}";
-        $options  = array(
+        $options  = [
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_EMULATE_PREPARES => false
-        );
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_STRINGIFY_FETCHES => false
+        ];
         return new PDO($dsn, $username, $password, $options);
     }
 

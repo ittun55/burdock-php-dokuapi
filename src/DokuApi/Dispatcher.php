@@ -63,6 +63,17 @@ class Dispatcher
             // application/json で送信されてきた場合の処理
             return json_decode(file_get_contents('php://input'), true);
         } else {
+//            $query = ['params' => []];
+//            foreach ($GLOBALS['_GET'] as $q => $v) {
+//                if ($q === 'resource') {
+//                    $query['resource'] = $v;
+//                } elseif ($q === 'action') {
+//                    $query['action'] = $v;
+//                } else {
+//                    $query['params'][$q] = $v;
+//                }
+//            }
+//            return $query;
             return null;
         }
     }

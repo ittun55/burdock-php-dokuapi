@@ -109,6 +109,8 @@ class Container
         $path   = $setting['path'];
         $rotate  = $setting['rotate'];
         $level  = $setting['level'];
+        if (!file_exists($path) || !is_writable($path))
+            throw new Exception("log dir ${path} is not exists or not writable.");
         $fileHandler = new RotatingFileHandler($path, $rotate, $level);
         $formatter = new LineFormatter();
         $formatter->includeStacktraces(true);

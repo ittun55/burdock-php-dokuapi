@@ -4,7 +4,7 @@
     "root_dir": null
   },
   "logger"  : {
-    "doku_api": {
+    "default": {
       "name"  : "DOKU_API",
       "path"  : "/var/log/dokuapi.log",
       "rotate": 90,

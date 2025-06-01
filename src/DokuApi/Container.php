@@ -126,13 +126,19 @@ class Container
     public static function initMailer($smtp, $container): void
     {
         foreach($smtp as $name => $setting) {
-            $container['mailer.'.$name] = function() use ($setting) {
-                $user = $setting['user'];
-                $pass = $setting['pass'];
-                $host = $setting['host'];
-                $port = $setting['port'];
-                $dsn = "smtp://${user}:${pass}@${host}:${port}";
-                return new SendMail($dsn);
+            $container['mailer.'.$name] = function() use ($name, $setting) {
+                if ($name === 'default') {
+                    $user = $setting['user'];
+                    $pass = $setting['pass'];
+                    $host = $setting['host'];
+                    $port = $setting['port'];
+                    $dsn = "smtp://{$user}:{$pass}@{$host}:{$port}";
+                    return \Burdock\SendMail\SendMail::getSmtp($dsn);
+                } elseif ($name === 'gmail') {
+                    $user = $setting['user'];
+                    $pass = $setting['pass'];
+                    return \Burdock\SendMail\SendMail::getGmail($user, $pass);                    
+                }
             };
         }
     }
